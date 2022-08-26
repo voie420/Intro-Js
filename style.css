@@ -1,0 +1,54 @@
+.container {
+    display:inline-block;
+    height: 100%;
+    width: 100%;
+    display:flex;
+    flex-direction: row;
+}
+
+h1 {
+    color:white;
+    font-size: xx-large;
+    font-family: 'Roboto', sans-serif;
+}
+.left {
+    min-height: 100%;
+    display: block;
+    height: 100%;
+    background-color: rgb(58, 57, 63);
+    width: 10%;
+}
+
+.center {
+    min-height: 100%;
+    display: block;
+    height: 95%;
+    background-color: rgb(58, 57, 63);
+    width: 80%;
+}
+
+.right {
+    min-height: 100%;
+    display: block;
+    height: 100%;
+    background-color: rgb(58, 57, 63);
+    width: 10%;
+}
+
+div {
+    display: block;
+}
+
+html, body, #wrapper, div#main {
+    height: 100%;
+    margin: 0;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    margin:5px;
+    height:5%;
+    width:100%;
+    background-color: rgb(58, 57, 63);
+}
