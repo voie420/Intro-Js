@@ -47,8 +47,16 @@ html, body, #wrapper, div#main {
 .header {
     display: flex;
     flex-direction: row;
+    align-items: center;
+    align-content: center;
     margin:5px;
     height:5%;
     width:100%;
     background-color: rgb(58, 57, 63);
+}
+
+.headertext {
+    color:white;
+    font-size: xx-large;
+    font-family: 'Roboto', sans-serif;
 }
