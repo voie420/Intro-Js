@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="calcstyle.css">
+    <title>Document</title>
+</head>
+<style>
+    #body, html {
+        margin:0%;
+    }
+    .grid0 {
+        background-color: aqua;
+    }
+</style>
+<script>
+    var selection1 = ""
+    var selection2 = ""
+</script>
+<body bgcolor="#303030">
+    <div class="container">
+        <div class="grid0">
+            <h1 id="selected">0</h1>
+        </div>
+        <center><div class="grid1">
+            <button onclick = "click7()">7</button>
+            <button onclick = "click8()">8</button>
+            <button onclick = "click9()">9</button>
+        </div>
+        <div class="grid2">
+            <button onclick = "click4()">4</button>
+            <button onclick = "click5()">5</button>
+            <button onclick = "click6()">6</button>
+        </div>
+        <div class="grid3">
+            <button onclick = "click1()">1</button>
+            <button onclick = "click2()">2</button>
+            <button onclick = "click3()">3</button>
+        </div>
+        <div class="grid4">
+            <button  onclick = "click0()">0</button>
+        </div></center>
+        
+        
+        
+        
+    </div>
+</body>
+<script>
+    function click0() {selection1 = `${selection1}0`, document.getElementById("selected").innerHTML = `${selection1}`}
+    function click1() {selection1 = `${selection1}1`, document.getElementById("selected").innerHTML = `${selection1}`}
+    function click2() {selection1 = `${selection1}2`, document.getElementById("selected").innerHTML = `${selection1}`}
+    function click3() {selection1 = `${selection1}3`, document.getElementById("selected").innerHTML = `${selection1}`}
+    function click4() {selection1 = `${selection1}4`, document.getElementById("selected").innerHTML = `${selection1}`}
+    function click5() {selection1 = `${selection1}5`, document.getElementById("selected").innerHTML = `${selection1}`}
+    function click6() {selection1 = `${selection1}6`, document.getElementById("selected").innerHTML = `${selection1}`}
+    function click7() {selection1 = `${selection1}7`, document.getElementById("selected").innerHTML = `${selection1}`}
+    function click8() {selection1 = `${selection1}8`, document.getElementById("selected").innerHTML = `${selection1}`}
+    function click9() {selection1 = `${selection1}9`, document.getElementById("selected").innerHTML = `${selection1}`}
+</script>
+</html>
