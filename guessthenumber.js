@@ -1,80 +1,48 @@
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="trophy.png">
-    <title>Eldorado</title>
-</head>
-<script>
-    var selectednumber = Math.floor(Math.random() * 100);
-    var wins = 0
-    var hearts = 7
-    var attempts = 0
-    var ac_2893758346578926349856 = 7
-    var ac_2879346257834583456298 = 0
-    var ac_2783425934562789346592 = 0
-</script>
-<div id = "fireworks" class="pyro">
-    <div class="before"></div>
-    <div class="after"></div>
-</div>
-<body bgcolor="#272934">
-    <div class="container">
-        <center><p class="warningtext" id="warntext"></p></center>
-        <div class="holder">
-            <center><h1 id="Headertitle">Guess the Number!</h1>
-            <div class="input-group">
-                <input required="" id="potatoes" placeholder="Type here" type="text" name="text" autocomplete="off" class="input">
-            </div>
-            <div class="buttondiv">
-            <button id="button" onclick = "execpot()" class="button">Answer</button></center>
-            <center><p id="winamount"></p></center>
-            <center><p id="hearts"></p></center>
-            <center><p id="attempts"></p></center>
-        </div>
-    </div>
-</body>
-<style>
-    #body {
-        background-image: url("bg.png");
-    }
-</style>
-<script> 
+
+var selectednumber = Math.floor(Math.random() * 99) + 1;
+var wins = 0
+var hearts = 7
+var time = 30
+var rounds = 0
+let timegodown = true
+
+document.getElementById("minitextdark").innerHTML = "The number is from the range between 1-100"
+
+var input = document.getElementById("potatoes");
+
+input.addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    execpot()
+  }
+});
+
+    document.getElementById("fireworks").style.display = "none";
     function restart() {
-        location.reload();
+        timegodown = true
+        time = 30
+        document.getElementById("time").innerHTML = `⏱Time: ${time}`;
+        document.getElementById("fireworks").style.display = "none";
+        document.getElementById("potatoes").style.display = "";
+        document.getElementById("Headertitle").innerHTML = "Guess the Number!";
+        document.getElementById("button").onclick = function() {execpot()};
+        document.getElementById("button").textContent = 'Answer';
+        hearts = 7
+        document.getElementById("winamount").innerHTML = `🏆Wins: ${wins}`;
+        document.getElementById("hearts").innerHTML = `💔Hearts: ${hearts}`;
+        document.getElementById("time").innerHTML = `⏱Time: ${time}`;
+        document.getElementById("round").innerHTML = `🎮Round: ${rounds = rounds + 1}`;
     }
     document.getElementById("winamount").innerHTML = `🏆Wins: ${wins}`;
     document.getElementById("hearts").innerHTML = `💔Hearts: ${hearts}`;
-    document.getElementById("attempts").innerHTML = `🤔Attempts: ${attempts}`;
-
-    var ac_2893758346578926349856 = hearts
-    var ac_2879346257834583456298 = wins
-    var ac_2783425934562789346592 = attempts
+    document.getElementById("time").innerHTML = `⏱Time: ${time}`;
+    document.getElementById("round").innerHTML = `🎮Round: ${rounds}`;
 
     function execpot() {
-        if (ac_2893758346578926349856 != hearts) {
-            location.reload();
-            alert("You have been caught cheating!")
-        }
-
-        if (ac_2879346257834583456298 != wins) {
-            location.reload();
-            alert("You have been caught cheating!")
-        }
-
-        if (ac_2783425934562789346592 != attempts) {
-            location.reload();
-            alert("You have been caught cheating!")
-        }
         document.getElementById("winamount").innerHTML = `🏆Wins: ${wins}`;
         let inputValue = document.getElementById('potatoes').value
-        document.getElementById("fireworks").style.visibility = "hidden";
+        
         
         if (inputValue == "") {
             document.getElementById("warntext").classList.remove('successtext');
@@ -105,6 +73,8 @@
                         if (inputValue < selectednumber) {ishigherorlower = "higher"}
                         document.getElementById("potatoes").value = "";
                         if (hearts < 1) {
+                            timegodown = false
+                            document.getElementById("fireworks").style.display = "inline";
                             document.getElementById("warntext").innerHTML = "";
                             document.getElementById("potatoes").style.display = "none";
                             document.getElementById("Headertitle").innerHTML = `Summary`;
@@ -112,32 +82,48 @@
                             document.getElementById("button").textContent = 'RESTART';
                         } else {
                             hearts -= 1
-                            attempts += 1
-                            ac_2893758346578926349856 -= 1
-                            ac_2783425934562789346592 += 1
                             document.getElementById("hearts").innerHTML = `💔Hearts: ${hearts}`;
                             document.getElementById("warntext").classList.remove('successtext');
                             document.getElementById("warntext").classList.add('warntext');
                             document.getElementById("warntext").innerHTML = `Your guess was wrong. The number you are trying to guess is ${ishigherorlower} than ${inputValue}!`;
-                            document.getElementById("attempts").innerHTML = `🤔Attempts: ${attempts}`;
+                            document.getElementById("time").innerHTML = `⏱Time: ${time}`;
                         }
                     } else {
-                        wins += 1
-                        hearts += 5
-                        ac_2893758346578926349856 += 5
-                        ac_2879346257834583456298 += 1
-                        selectednumber = Math.floor(Math.random() * 100);
+                        wins = wins + 1
+                        time = time + 15
+                        console.log(`NEW TIME: ${time}`)
+                        hearts = hearts + 5
+                        selectednumber = Math.floor(Math.random() * 99) + 1;
+                        document.getElementById("time").innerHTML = `⏱Time: ${time}`;
                         document.getElementById("potatoes").value = "";
                         document.getElementById("hearts").innerHTML = `💔Hearts: ${hearts}`;
                         document.getElementById("winamount").innerHTML = `🏆Wins: ${wins}`;
                         document.getElementById("warntext").classList.remove('warntext');
                         document.getElementById("warntext").classList.add('successtext');
                         document.getElementById("fireworks").style.visibility = "visible";
-                        document.getElementById("warntext").innerHTML = `🏆 Congratulations! The number was ${inputValue} (+5 Hearts)`;
+                        document.getElementById("warntext").innerHTML = `🏆 Congratulations! The number was ${inputValue} (+5 Hearts, +10 Seconds)`;
                     }
                 }
             } 
         }
     }
-</script> 
-</html>
+
+    var timer = setInterval(myTimer, 1000);
+
+    function myTimer(){ 
+        if (timegodown){
+            time--;
+            if (time > 0) {
+                document.getElementById("time").innerHTML = `⏱Time: ${time}`
+            } else {
+                document.getElementById("time").innerHTML = `⏱Time: 0`
+                timegodown = false
+                document.getElementById("fireworks").style.display = "inline";
+                document.getElementById("warntext").innerHTML = "";
+                document.getElementById("potatoes").style.display = "none";
+                document.getElementById("Headertitle").innerHTML = `Summary`;
+                document.getElementById("button").onclick = function() {restart()};
+                document.getElementById("button").textContent = 'RESTART';
+            }
+        }
+    }
