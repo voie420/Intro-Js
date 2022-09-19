@@ -25,6 +25,7 @@ input.addEventListener("keypress", function(event) {
         document.getElementById("time").innerHTML = `⏱Time: ${time}`;
         document.getElementById("fireworks").style.display = "none";
         document.getElementById("potatoes").style.display = "";
+        document.getElementById("minitextdark").innerHTML = "The number is from the range between 1-100"
         document.getElementById("Headertitle").innerHTML = "Guess the Number!";
         document.getElementById("button").onclick = function() {execpot()};
         document.getElementById("button").textContent = 'Answer';
@@ -77,6 +78,7 @@ input.addEventListener("keypress", function(event) {
                             document.getElementById("fireworks").style.display = "inline";
                             document.getElementById("warntext").innerHTML = "";
                             document.getElementById("potatoes").style.display = "none";
+                            document.getElementById("minitextdark").innerHTML = `The number was ${selectednumber}!`;
                             document.getElementById("Headertitle").innerHTML = `Summary`;
                             document.getElementById("button").onclick = function() {restart()};
                             document.getElementById("button").textContent = 'RESTART';
